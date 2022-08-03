@@ -49,9 +49,9 @@ public class ArithmeticOperations {
     private String name;
     @ApiModelProperty(value = "Description of the operation", example = "Product is ")
     private String description;
-    @ApiModelProperty(value = "Min number of operand for the operation",example = "2")
+    @ApiModelProperty(value = "Minimum number of operands for the operation", example = "2")
     private Integer minNumberOfOperands;
-    @ApiModelProperty(value = "An array of the operation properties",example = "commutative, associative, distributive")
+    @ApiModelProperty(value = "An array of the operation properties", example = "commutative, associative, distributive")
     private String[] properties;
 
 

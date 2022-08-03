@@ -39,7 +39,7 @@ public class MathController {
             @ApiResponse(code = 404, message = "Page not found"),
             @ApiResponse(code = 500, message = "Internal error")})
 
-    public int product (@RequestParam(required = true) Integer int1 , @RequestParam(required = true) Integer int2){
+    public int product (@RequestParam Integer int1 , @RequestParam Integer int2){
         return (int1 * int2);
     }
 
@@ -49,8 +49,8 @@ public class MathController {
     @ApiResponses({@ApiResponse(code = 400, message = "Bad input"),
             @ApiResponse(code = 404, message = "Page not found"),
             @ApiResponse(code = 500, message = "Internal error")})
-    public int square (@RequestParam(required = true)int a){
-        return a ^ 2;
+    public int square (@RequestParam int a){
+        return a * a;
     }
 
 

@@ -1,6 +1,6 @@
-server:
-port : 5050
 spring:
-mvc:
-pathmatch:
-matching-strategy: ant_path_matcher
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+server:
+  port: 5050
