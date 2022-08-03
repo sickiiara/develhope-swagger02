@@ -8,49 +8,48 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/Math")
+@RequestMapping("/math")
 public class MathController {
 
     String[] divProperties = new String[]{"distributive","invariant"};
 
     @GetMapping(value = "")
-    @ApiOperation(value = "welcome the user", notes = "Print a welcome message")
+    @ApiOperation(value = "welcome the user", notes = "print a welcome message")
     @ResponseStatus(HttpStatus.OK)
-    @ApiResponse(code = 500, message = "INTERNAL SERVER ERROR")
+    @ApiResponse(code = 500, message = "Internal error")
     public String welcomeMathMessage(){
-        return "Welcome to math controller";
+        return "Welcome to the math controller";
     }
 
     @GetMapping(value ="/division-info")
     @ApiOperation(value ="Division Properties",notes = "exposes the properties of the division")
     @ResponseStatus(HttpStatus.OK)
-    @ApiResponses({@ApiResponse(code = 400, message = "BAD INPUT"),
-            @ApiResponse(code = 404, message = "PAGE NOT FOUND"),
-            @ApiResponse(code = 500, message = "INTERNAL SERVER ERROR")})
+    @ApiResponses({@ApiResponse(code = 400, message = "Bad input"),
+            @ApiResponse(code = 404, message = "Page not found"),
+            @ApiResponse(code = 500, message = "Internal error")})
 
     public ArithmeticOperations division(){
         return new ArithmeticOperations ("Division","inverse operation of multiplication",2, divProperties);
     }
 
-    String[] multProperties = new String[]{"commutative", "associative", "dissociative", "removing a common factor", "neutral element"};
     @GetMapping(value = "/multiplication")
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Multiplication",notes = "Returns the product of two or more numbers")
-    @ApiResponses({@ApiResponse(code = 400, message = "BAD INPUT"),
-            @ApiResponse(code = 404, message = "PAGE NOT FOUND"),
-            @ApiResponse(code = 500, message = "INTERNAL SERVER ERROR")})
+    @ApiOperation(value = "Multiplication",notes = "Returns the product of two numbers")
+    @ApiResponses({@ApiResponse(code = 400, message = "Bad input"),
+            @ApiResponse(code = 404, message = "Page not found"),
+            @ApiResponse(code = 500, message = "Internal error")})
 
-    public ArithmeticOperations multiplication (@RequestParam(required = true) Integer int1 ,@RequestParam(required = true) Integer int2){
-        return new ArithmeticOperations("Multiplication", "a * b", 2,multProperties);
+    public int product (@RequestParam(required = true) Integer int1 , @RequestParam(required = true) Integer int2){
+        return (int1 * int2);
     }
 
     @GetMapping(value = "/square{n}")
     @ApiOperation(value = "square", notes = "Return the square of the number (n * n)" )
     @ResponseStatus(HttpStatus.OK)
-    @ApiResponses({@ApiResponse(code = 400, message = "BAD INPUT"),
-            @ApiResponse(code = 404, message = "PAGE NOT FOUND"),
-            @ApiResponse(code = 500, message = "INTERNAL SERVER ERROR")})
-    public Integer square (@RequestParam(required = true)Integer a){
+    @ApiResponses({@ApiResponse(code = 400, message = "Bad input"),
+            @ApiResponse(code = 404, message = "Page not found"),
+            @ApiResponse(code = 500, message = "Internal error")})
+    public int square (@RequestParam(required = true)int a){
         return a ^ 2;
     }
 
